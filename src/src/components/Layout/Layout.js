@@ -1,10 +1,11 @@
 import React from "react"
 import s from './Layout.module.css'
 
-function Layout({id, title, descr, urlBG, colorBg}) {
-    const styleRoot = {}
-    styleRoot.backgroundImage = urlBG ?`url(${urlBG})` : null
-    styleRoot.backgroundColor = colorBg ? colorBg : null
+function Layout({id, title, descr, urlBG, colorBg, children}) {
+    const styleRoot = {
+        backgroundImage: urlBG ?`url(${urlBG})` : null,
+        backgroundColor: colorBg ? colorBg : null
+    }
     return (
         <section
             className={s.root}
@@ -16,9 +17,10 @@ function Layout({id, title, descr, urlBG, colorBg}) {
                     <div className={s.title}>
                         <h3>{title}</h3>
                         <span className={s.separator}></span>
+
                     </div>
                     <div className={`${s.desc} ${s.full}`}>
-                        <p>{descr}</p>
+                        {children}
                     </div>
                 </article>
             </div>
