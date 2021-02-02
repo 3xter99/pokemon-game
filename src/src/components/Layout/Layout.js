@@ -1,5 +1,6 @@
 import React from "react"
 import s from './Layout.module.css'
+import cn from 'classnames'
 
 function Layout({id, title, descr, urlBG, colorBg, children}) {
     const styleRoot = {
@@ -19,12 +20,12 @@ function Layout({id, title, descr, urlBG, colorBg, children}) {
                         <span className={s.separator}></span>
 
                     </div>
-                    <div className={`${s.desc} ${s.full}`}>
-                        {children}
+                    <div className={cn(s.desc, s.full)}>
                     </div>
+                    {children}
                 </article>
             </div>
         </section>
-    )
+    );
 }
 export default Layout;
