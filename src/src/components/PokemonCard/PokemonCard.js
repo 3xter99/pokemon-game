@@ -3,15 +3,12 @@ import s from './PokemonCard.module.css'
 import cn from 'classnames'
 import cardBackSide from './../../assets/card-back-side.jpg'
 
-function PokemonCard({id, img, name, type, values}) {
-    const [isActive, setActive] = useState(false)
+function PokemonCard({id, img, name, type, values, handleClick, isActive}) {
+    // const [isActive, setActive] = useState(false)
     
-    const handleClick = () => {
-        setActive(!isActive)
-    }
 
     return (
-<div className={s.root} onClick={handleClick}>
+<div className={s.root} onClick={() => handleClick(id)}>
     <div className={cn(s.pokemonCard, {[s.active]: isActive})}>
         <div className={s.cardFront}>
             <div className={cn(s.wrap, s.front)}>
@@ -23,7 +20,7 @@ function PokemonCard({id, img, name, type, values}) {
                         <div className={cn(s.count, s.left)}>{values.left}</div>
                     </div>
                     <div className={s.imgContainer}>
-                        <img src={img} alt={name} />cn(
+                        <img src={img} alt={name} />
                     </div>
                     <div className={s.info}>
                         <span className={s.number}>#{id}</span>

@@ -148,14 +148,13 @@ const POKEMONS = [
 
 function HomePage({handleChangePage}) {
 const handleClickButton = (page) => {
-    console.log('homePage')
     handleChangePage && handleChangePage(page)
 }
 
 
     return (
         <>
-            <MenuHeader />
+            {/*<MenuHeader />*/}
             <Header
                 title={'This is title'}
                 descr={'This is Description!'}
