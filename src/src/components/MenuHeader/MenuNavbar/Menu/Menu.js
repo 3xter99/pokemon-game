@@ -1,35 +1,46 @@
 import React from "react"
 import s from './Menu.module.css';
 import cn from 'classnames'
+import {Link} from "react-router-dom";
 
-const Menu = ({isActive}) => {
-    console.log(s)
+const MENU = [
+    {
+        href : '/welcome',
+        title : 'HOME'
+    },
+    {
+        href : '/game',
+        title : 'GAME'
+    },
+    {
+        href : '/about',
+        title : 'ABOUT'
+    },
+    {
+        href : '/contact',
+        title : 'CONTACT'
+    }
+    ]
+
+const Menu = ({isActive, handleChange}) => {
 
     return (
-        <div className={cn(s.menuContainer, {[s.active] : isActive})}>
-            <div className={s.overlay}></div>
-            <div className={s.menuContainer}>
+        <div className={cn(s.menuContainer, {
+            [s.active] : isActive === true,
+            [s.deactive] : isActive === false
+        })}>
+            <div className={s.overlay}/>
+            <div>
                 <ul>
-                    <li>
-                        <a href="#welcome">
-                            HOME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#game">
-                            GAME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#about">
-                            ABOUT
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact">
-                            CONTACT
-                        </a>
-                    </li>
+                    {
+                        MENU.map(({href, title}, index) => (
+                            <li key={href} onClick={()=> {handleChange()}}>
+                                <Link to={href}>
+                                    {title}
+                                </Link>
+                            </li>
+                        ))
+                    }
                 </ul>
             </div>
         </div>
